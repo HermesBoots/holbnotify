@@ -14,6 +14,7 @@ def addEvent(creds: holbnotify.Creds, project: str):
 
     """
 
+    crontab = ''
     try:
         crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
     except subprocess.CalledProcessError:
@@ -36,6 +37,7 @@ def clearEvent(project: str) -> int:
 
     """
 
+    crontab = ''
     try:
         crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
     except subprocess.CalledProcessError:
