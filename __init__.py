@@ -1,4 +1,4 @@
 import collections
 
 
-Creds = collections.namedtuple('Creds', ('apiKey', 'email', 'password'))
+Creds = collections.namedtuple('Creds', ('api_key', 'email', 'password'))

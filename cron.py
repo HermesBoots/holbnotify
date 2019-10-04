@@ -18,7 +18,7 @@ def addEvent(creds: holbnotify.Creds, project: str):
     crontab = crontab.splitlines()
     schedule = b'0,30 * * * *'
     command = 'PYTHONPATH={} python3 -m holbnotify.check {} {} {} {}'.format(
-        path, project, creds.apiKey, creds.email, creds.password
+        path, project, creds.api_key, creds.email, creds.password
     ).encode('ASCII')
     crontab.append(schedule + b' ' + command)
     cron = subprocess.Popen(('crontab', '-'), stdin=subprocess.PIPE)
