@@ -25,7 +25,7 @@ def addEvent(creds: holbnotify.Creds, project: str):
     cron.communicate(b'\n'.join(crontab) + b'\n', 3)
     cron.wait(3)
 
-def clearEvent(project: str):
+def clearEvent(project: str) -> int:
     """Remove a recurring event from the crontab.
 
     Args:
@@ -39,9 +39,12 @@ def clearEvent(project: str):
     command = 'PYTHONPATH={} python3 -m holbnotify.check {}'.format(
         path, project
     ).encode('ASCII')
+    removed = 0
     for index, line in enumerate(crontab):
-        if line.startswith(schedule + b' ' + command):
+        if line.startswith(schedule + b' ' + command + b' '):
             del crontab[index]
+            removed += 1
     cron = subprocess.Popen(('crontab', '-'), stdin=subprocess.PIPE)
     cron.communicate(b'\n'.join(crontab) + b'\n', 3)
     cron.wait(3)
+    return removed
