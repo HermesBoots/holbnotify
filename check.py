@@ -4,6 +4,7 @@ import holbnotify.all_checker.project_checker as pc
 import http.client
 import sys
 import holbnotify as holn
+import holbnotify.cron
 import holbnotify.sendEmail
 import json
 
@@ -27,5 +28,6 @@ proj = json.loads(conn.getresponse().read().decode('UTF-8'))
 if any(task['checker_available'] for task in proj['tasks']):
     failed_tasks = sorted(pc.LOTC(proj['id'], *creds))
     holbnotify.sendEmail.sendEmail(creds, failed_tasks)
+    holbnotify.cron.clearEvent(proj_url)
 else:
     sys.exit()
