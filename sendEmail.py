@@ -2,7 +2,7 @@
 from holbnotify import Creds
 import smtplib
 
-def sendEmail(creds):
+def sendEmail(creds, taskList):
     """Sends an email to a user
 
     Args:
@@ -21,8 +21,9 @@ def sendEmail(creds):
     server.login(email, paswd)
 
     # Email message to send
-    subject = "Tasks Failed"
-    text = "This is placeholder text until we have more data"
+    subject = "{} Tasks Failed".format(len(taskList))
+    text = "The checker is now available, and you missed {} tasks\n".format(len(taskList))
+    text += '\n'.join(str(i) for i in taskList)
     message = "Subject: {}\n\n{}".format(subject, text)
 
     # Sends the email and exits the server
