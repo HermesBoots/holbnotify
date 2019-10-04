@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import all_checker.project_checker as pc
+import holbnotify.all_checker.project_checker as pc
 import http.client
 import sys
 import holbnotify as holn
