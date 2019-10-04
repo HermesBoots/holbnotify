@@ -26,6 +26,6 @@ proj = json.loads(conn.getresponse().read().decode('UTF-8'))
 
 if any(task['checker_available'] for task in proj['tasks']):
     failed_tasks = sorted(pc.LOTC(proj['id'], *creds))
-    holbnotify.sendEmail.sendEMail(creds, failed_tasks)
+    holbnotify.sendEmail.sendEmail(creds, failed_tasks)
 else:
     sys.exit()
