@@ -16,7 +16,7 @@ what checks have been missed
 
 | Argument | Description |
 | - | - |
-| `{add || remove}`| Starts or stops polling a project checker |
+| `{add \|\| remove}`| Starts or stops polling a project checker |
 | `PROJECT_URL` | URL of a project to poll |
 
 ### Optional Arguments
