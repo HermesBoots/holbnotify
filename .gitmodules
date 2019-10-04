@@ -1,0 +1,3 @@
+[submodule "all_checker"]
+	path = all_checker
+	url = git@github.com:klitscher/holberton_hackday2.git
