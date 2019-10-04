@@ -14,7 +14,10 @@ def addEvent(creds: holbnotify.Creds, project: str):
 
     """
 
-    crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
+    try:
+        crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
+    except subprocess.CalledProcessError:
+        pass
     crontab = crontab.splitlines()
     schedule = b'0,30 * * * *'
     command = 'PYTHONPATH={} python3 -m holbnotify.check {} {} {} {}'.format(
@@ -33,7 +36,10 @@ def clearEvent(project: str) -> int:
 
     """
 
-    crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
+    try:
+        crontab = subprocess.check_output(('crontab', '-l'), timeout=3)
+    except subprocess.CalledProcessError:
+        pass
     crontab = crontab.splitlines()
     schedule = b'0,30 * * * *'
     command = 'PYTHONPATH={} python3 -m holbnotify.check {}'.format(
