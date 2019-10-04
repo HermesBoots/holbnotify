@@ -71,3 +71,5 @@ if __name__ == '__main__':
         print('{} polling events removed'.format(removed))
         sys.exit(0)
     creds = getCreds(args)
+    holbnotify.cron.addEvent(creds, args.project)
+    print('You will be notified if the project checker is available.')
